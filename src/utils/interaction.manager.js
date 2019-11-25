@@ -7,50 +7,58 @@ class InteractionManager {
 		this.interaction = new Interaction(renderer, scene, camera);
 	}
 
-	_linkInteractionComponents(typeInteraction) {
+	onClick() {
 		for (let i = 0; i < this.components.length; i++) {
-			this.components[i].mesh.on(typeInteraction, event => this.components[i].click(event));
+			this.components[i].mesh.on('click', event => this.components[i].click(event));
 		}
 	}
 
-	onClick() {
-		this._linkInteractionComponents('click');
-	}
-
 	onTouchstart() {
-		this._linkInteractionComponents('touchstart');
+		for (let i = 0; i < this.components.length; i++) {
+			this.components[i].mesh.on('touchstart', event => this.components[i].touchstart(event));
+		}
 	}
 
 	onTouchcancel() {
-		this._linkInteractionComponents('touchcancel');
+		for (let i = 0; i < this.components.length; i++) {
+			this.components[i].mesh.on('touchcancel', event => this.components[i].touchcancel(event));
+		}
 	}
 
 	onTouchmove() {
-		this._linkInteractionComponents('touchmove');
+		for (let i = 0; i < this.components.length; i++) {
+			this.components[i].mesh.on('touchmove', event => this.components[i].touchcancel(event));
+		}
 	}
 
 	onTouchend() {
-		this._linkInteractionComponents('touchend');
+		for (let i = 0; i < this.components.length; i++) {
+			this.components[i].mesh.on('touchend', event => this.components[i].touchcancel(event));
+		}
 	}
 
 	onMousedown() {
-		this._linkInteractionComponents('mousedown');
+		for (let i = 0; i < this.components.length; i++) {
+			this.components[i].mesh.on('mousedown', event => this.components[i].touchcancel(event));
+		}
 	}
 
 	onMouseout() {
-		this._linkInteractionComponents('mouseout');
+		for (let i = 0; i < this.components.length; i++) {
+			this.components[i].mesh.on('mouseout', event => this.components[i].touchcancel(event));
+		}
 	}
 
 	onMouseover() {
-		this._linkInteractionComponents('mouseover');
+		for (let i = 0; i < this.components.length; i++) {
+			this.components[i].mesh.on('mouseover', event => this.components[i].touchcancel(event));
+		}
 	}
 
 	onMousemove() {
-		this._linkInteractionComponents('mousemove');
-	}
-
-	onMousemove() {
-		this._linkInteractionComponents('mousemove');
+		for (let i = 0; i < this.components.length; i++) {
+			this.components[i].mesh.on('mousemove', event => this.components[i].touchcancel(event));
+		}
 	}
 }
 

@@ -1,5 +1,6 @@
 import * as THREE from 'three';
-import OrbitControls from 'orbit-controls-es6';
+import * as OrbitControls from 'orbit-controls-es6';
+import * as datGUI from 'dat.gui';
 
 import LoaderManager from './loader.manager';
 import InteractionManager from './interaction.manager';
@@ -22,13 +23,16 @@ class SceneManager {
 
 		// Interactions controls
 		this.controls = this.buildControls(this.camera, this.renderer);
-		//this.buildInteraction = this.buildInteraction(this.renderer, this.scene, this.camera);
+
 		this.interaction = new InteractionManager(
 			this.renderer,
 			this.scene,
 			this.camera,
 			this.components,
 		);
+
+		this.gui = new datGUI.GUI();
+		this.buildGUI();
 	}
 
 	buildScene() {
@@ -72,36 +76,6 @@ class SceneManager {
 		return controls;
 	}
 
-	/*buildInteraction(renderer, scene, camera) {
-		const interaction = new Interaction(renderer, scene, camera);
-
-		return interaction;
-	}
-
-	onClick() {
-		for (let i = 0; i < this.components.length; i++) {
-			this.components[i].mesh.on('click', event => this.components[i].click(event));
-		}
-	}
-
-	onTouchstart() {
-		for (let i = 0; i < this.components.length; i++) {
-			this.components[i].mesh.on('touchstart', event => this.components[i].click(event));
-		}
-	}
-
-	onTouchcancel() {
-		for (let i = 0; i < this.components.length; i++) {
-			this.components[i].mesh.on('touchcancel', event => this.components[i].click(event));
-		}
-	}
-
-	onTouchcancel() {
-		for (let i = 0; i < this.components.length; i++) {
-			this.components[i].mesh.on('touchcancel', event => this.components[i].click(event));
-		}
-	}*/
-
 	/*
 	 * UpdateComponents and onResize call it in the high component level
 	 */
@@ -132,12 +106,19 @@ class SceneManager {
 		return this.loader.isLoaded();
 	}
 
+	buildGUI() {
+		for (let i = 0; i < this.components.length; i++) {
+			this.components[i].addGUI(this.gui);
+		}
+	}
+
 	/*
 	 * addComponents and removeComponents call it in the scene extends of this class
 	 */
-	addComponents(component, texture = null) {
+	addComponents(component) {
 		this.components.push(component);
 		this.interaction.onClick();
+		this.buildGUI();
 	}
 
 	removeComponents() {}

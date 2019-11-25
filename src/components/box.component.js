@@ -44,6 +44,14 @@ class Box extends ComponentManager {
 	click(event) {
 		console.log('ok');
 	}
+
+	addGUI(gui) {
+		let folder = gui.addFolder('test');
+
+		folder.add(this.mesh.position, 'x', -10, 10);
+		folder.add(this.mesh.position, 'y', -10, 10);
+		folder.add(this.mesh.position, 'z', -10, 10);
+	}
 }
 
 export default Box;
