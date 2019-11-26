@@ -6348,6 +6348,11 @@ text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
+three-gltf-loader@^1.110.0:
+  version "1.110.0"
+  resolved "https://registry.yarnpkg.com/three-gltf-loader/-/three-gltf-loader-1.110.0.tgz#74562fe087f76a9cf5768517295a3b11bac7dd1c"
+  integrity sha512-sLIggbrER8iAQwGm4HVzf2R6qIOZBLdpExGf8rIB6e1qJRpT35cEYxlGQsoV9T7wBpcwTF4pK8nbyIMra7ce/Q==
+
 three.interaction@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/three.interaction/-/three.interaction-0.2.2.tgz#01ce80ba7cacd24ada09dc57f1d64e9dd5d7a0b0"

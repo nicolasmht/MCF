@@ -38,11 +38,11 @@ class Box extends ComponentManager {
 	}
 
 	update(time) {
-		//this.mesh.position.y = Math.sin(time) * 2;
+		this.mesh.position.y = Math.sin(time) * 2;
 	}
 
 	click(event) {
-		console.log('ok');
+		console.log('Cube touched !');
 	}
 
 	addGUI(gui) {

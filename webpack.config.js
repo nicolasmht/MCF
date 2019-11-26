@@ -3,26 +3,25 @@ const path = require('path');
 
 // Plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const DashboardPlugin = require("webpack-dashboard/plugin");
+const DashboardPlugin = require('webpack-dashboard/plugin');
 
 // Global variables
-const APP_TITLE = "My new App";
+const APP_TITLE = 'My new App';
 const entry = './src/application.js';
 
 module.exports = {
-
-    entry: entry,
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+	entry: entry,
+	output: {
+		path: path.resolve(__dirname, 'dist'),
+		filename: 'bundle.js',
 	},
 
-	devServer : {
+	devServer: {
 		compress: true,
-		contentBase: path.join(__dirname, "dist"),
-		host: "localhost",
+		contentBase: path.join(__dirname, 'dist'),
+		host: 'localhost',
 		inline: true,
 		port: 8080,
 		stats: {
@@ -33,31 +32,31 @@ module.exports = {
 		},
 	},
 
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: ['babel-loader'],
-            },
-            {
-                test: /\.html$/,
-                use: [
-                    {
-                        loader: "html-loader",
-                        options: { minimize: true }
-                    }
-                ]
-            },
+	module: {
+		rules: [
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: ['babel-loader'],
+			},
+			{
+				test: /\.html$/,
+				use: [
+					{
+						loader: 'html-loader',
+						options: { minimize: true },
+					},
+				],
+			},
 			{
 				test: /\.s[ac]ss$/i,
 				use: [
-				  // Creates `style` nodes from JS strings
-				  'style-loader',
-				  // Translates CSS into CommonJS
-				  'css-loader',
-				  // Compiles Sass to CSS
-				  'sass-loader',
+					// Creates `style` nodes from JS strings
+					'style-loader',
+					// Translates CSS into CommonJS
+					'css-loader',
+					// Compiles Sass to CSS
+					'sass-loader',
 				],
 			},
 			{
@@ -69,46 +68,52 @@ module.exports = {
 			{
 				test: /\.(ttf)(\?v=[0-9]\.[0-9]\.[0-9])?$/, // Font file
 				use: {
-					loader: "file-loader",
+					loader: 'file-loader',
 				},
 			},
 			{
-                test: /\.glsl$/,
-                loader: 'webpack-glsl'
-            }
-        ]
-    },
+				test: /\.glsl$/,
+				loader: 'webpack-glsl',
+			},
+			{
+				test: /\.(gltf|glb)$/,
+				use: [
+					{
+						loader: 'file-loader',
+					},
+				],
+			},
+		],
+	},
 
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: APP_TITLE,
-            template: "./src/index.html",
-			filename: "./index.html",
+	plugins: [
+		new HtmlWebpackPlugin({
+			title: APP_TITLE,
+			template: './src/index.html',
+			filename: './index.html',
 			minify: {
 				collapseWhitespace: true,
 				removeComments: true,
 				removeRedundantAttributes: true,
 				removeScriptTypeAttributes: true,
 				removeStyleLinkTypeAttributes: true,
-				useShortDoctype: true
-			  }
-        }),
-        new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "[id].css"
-        }),
-        new DashboardPlugin()
-    ],
+				useShortDoctype: true,
+			},
+		}),
+		new MiniCssExtractPlugin({
+			filename: '[name].css',
+			chunkFilename: '[id].css',
+		}),
+		new DashboardPlugin(),
+	],
 
-    optimization: {
-
-	},
+	optimization: {},
 
 	resolve: {
 		alias: {
-			three: path.resolve(__dirname, "node_modules/three"),
-		}
+			three: path.resolve(__dirname, 'node_modules/three'),
+		},
 	},
 
-	target: "web",
-}
+	target: 'web',
+};

@@ -9,6 +9,9 @@ class InteractionManager {
 
 	onClick() {
 		for (let i = 0; i < this.components.length; i++) {
+			if (!this.components[i].mesh) {
+				break;
+			}
 			this.components[i].mesh.on('click', event => this.components[i].click(event));
 		}
 	}

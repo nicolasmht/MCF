@@ -22,6 +22,7 @@
         "stats-js": "^1.0.1",
         "style-loader": "^1.0.0",
         "three": "^0.110.0",
+        "three-gltf-loader": "^1.110.0",
         "three.interaction": "^0.2.2",
         "webpack": "^4.41.2",
         "webpack-cli": "^3.3.10",
