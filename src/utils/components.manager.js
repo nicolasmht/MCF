@@ -3,7 +3,7 @@ class ComponentManager {
 		this.scene = scene;
 	}
 
-	update(time) {}
+	update(clock) {}
 	click(event) {}
 	touchstart(event) {}
 	touchcancel(event) {}

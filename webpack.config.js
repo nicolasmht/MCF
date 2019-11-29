@@ -66,6 +66,12 @@ module.exports = {
 				},
 			},
 			{
+				test: /\.(mp3)$/i,
+				use: {
+					loader: 'file-loader',
+				},
+			},
+			{
 				test: /\.(ttf)(\?v=[0-9]\.[0-9]\.[0-9])?$/, // Font file
 				use: {
 					loader: 'file-loader',

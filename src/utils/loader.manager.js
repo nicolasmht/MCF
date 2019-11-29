@@ -13,8 +13,6 @@ class LoaderManager {
 			THREE.DefaultLoadingManager.onProgress = (item, loaded, total) => {
 				if (loaded == total) {
 					resolve();
-				} else {
-					console.log('ok');
 				}
 			};
 		});

@@ -81,10 +81,8 @@ class SceneManager {
 	 */
 
 	updateComponents() {
-		const elapsedTime = this.clock.getElapsedTime();
-
 		for (let i = 0; i < this.components.length; i++) {
-			this.components[i].update(elapsedTime);
+			this.components[i].update(this.clock);
 		}
 
 		this.renderer.render(this.scene, this.camera);
